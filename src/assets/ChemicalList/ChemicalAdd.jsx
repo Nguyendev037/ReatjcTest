@@ -45,7 +45,7 @@ export default function ChemicalAdd() {
             type="text"
             value={formu}
             placeholder="Input Chemic Formula"
-            onChange={(e) => setFormu(e.target.value)}
+            onChange={(e) => setFormu(e.target.value.trim())}
           />
         </Col>
         <Col className="col-lg-2">
