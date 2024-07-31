@@ -23,7 +23,7 @@ export default function ChemicalTable() {
         </tr>
       </thead>
       <tbody>
-        {ChemicalList.map((chemic, index) => {
+        {ChemicalList && ChemicalList.map((chemic, index) => {
           return (
             <tr key={index}>
               <th scope="row">{chemic.id}</th>

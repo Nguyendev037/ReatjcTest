@@ -2,18 +2,17 @@ import React from 'react'
 import {Container} from "reactstrap"
 import ChemicalTable from './ChemicalTable'
 import ChemicalAdd from './ChemicalAdd'
-import { addChemical } from '../Redux/chemicalSlice'
 import "./ChemicalCSS/ChemicalList.css"
-import { useSelector, useDispatch } from 'react-redux'
+
 export default function ChemicalList() {
-
-
-
 
   return (
     <div className="chemicalList mx-auto d-flex align-items-center justify-contain-center">
         <Container>
-            <ChemicalAdd addChemical={addChemical}/>
+          <h2 className='dp-felex text-center mb-3'>
+            Chemical Information
+          </h2>
+            <ChemicalAdd />
             <ChemicalTable/>
         </Container>
     </div>

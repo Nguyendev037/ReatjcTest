@@ -4,38 +4,48 @@ import { useSelector, useDispatch } from "react-redux";
 import { addChemical } from "../Redux/chemicalSlice";
 
 import { useState, useEffect } from "react";
-export default function ChemicalAdd(prop) {
-  const [text, setText] = useState("");
+export default function ChemicalAdd() {
 
   const [newChem, setNewChem] = useState({
-    name: "",
-    formula: "",
+    name: null,
+    formula: null,
   });
 
+  const dispatch = useDispatch();
+
+  let [newName, setName] = useState("");
+  let [formu, setFormu] = useState("");
+
   const addNewChemical = () => {
-    dispatchEvent(addChemical(newChem));
-   
+
+    // setNewChem((newChem.name = newName));
+    // setNewChem((newChem.formula = formu));
+    // console.log("newChem: ", newChem);
+
+    dispatch(addChemical({ newName, formu }));
+    setFormu("");
+    setName("");
   };
 
   return (
-    <div className="mb-3">
+    <div className="mb-5">
       <Row>
-        <Col className="col-lg-5">
+        <Col className="col-lg-6">
+          <h5>Chemical Name Input</h5>
           <Input
+            value={newName}
             type="text"
             placeholder="Input Chemic Name"
-            onChange={(e) =>
-              setNewChem((state) => (state.name = e.target.value))
-            }
+            onChange={(e) => setName(e.target.value)}
           />
         </Col>
-        <Col className="col-lg-5">
+        <Col className="col-lg-6 mb-3">
+          <h5>Chemical Formula Input</h5>
           <Input
             type="text"
+            value={formu}
             placeholder="Input Chemic Formula"
-            onChange={(e) =>
-              setNewChem((state) => (state.formula = e.target.value))
-            }
+            onChange={(e) => setFormu(e.target.value)}
           />
         </Col>
         <Col className="col-lg-2">
